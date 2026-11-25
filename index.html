@@ -11,6 +11,7 @@
   --pink:#FFDDEE; --pink-deep:#F08CBB; --cream:#FFFBFE; --panel:#F6F0FF;
   --ink:#3D3550; --sub:#8B83A0; --line:rgba(142,114,216,.22);
   --shadow:0 20px 50px -22px rgba(142,114,216,.38); --max:960px;
+  --pink-mid:#F7B6D4; --bg1:#F1E8FF; --bg2:#FFF9FD;
 }
 *,*::before,*::after{box-sizing:border-box;}
 html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden;}
@@ -23,13 +24,13 @@ body{
     radial-gradient(circle at 92% 30%,rgba(205,187,250,.45) 0,transparent 30%),
     radial-gradient(circle at 20% 85%,rgba(205,187,250,.35) 0,transparent 28%),
     radial-gradient(circle at 85% 92%,rgba(255,221,238,.5) 0,transparent 26%),
-    linear-gradient(170deg,#F1E8FF 0%,#FFF9FD 100%);
+    linear-gradient(170deg,var(--bg1) 0%,var(--bg2) 100%);
   background-attachment:fixed;background-repeat:no-repeat;
 }
 /* 떠다니는 장식 */
 .deco{position:fixed;pointer-events:none;z-index:0;color:var(--lav-mid);opacity:.6;font-size:22px;animation:floaty 6s ease-in-out infinite;}
-.deco.d1{top:9%;left:4%;}.deco.d2{top:22%;right:5%;color:#F7B6D4;animation-delay:-2s;font-size:26px;}
-.deco.d3{top:62%;left:3%;color:#F7B6D4;animation-delay:-4s;}.deco.d4{top:78%;right:4%;animation-delay:-1s;font-size:28px;}
+.deco.d1{top:9%;left:4%;}.deco.d2{top:22%;right:5%;color:var(--pink-mid);animation-delay:-2s;font-size:26px;}
+.deco.d3{top:62%;left:3%;color:var(--pink-mid);animation-delay:-4s;}.deco.d4{top:78%;right:4%;animation-delay:-1s;font-size:28px;}
 @keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(12deg)}}
 img,video,iframe{max-width:100%;display:block;}
 .page{max-width:var(--max);margin:0 auto;padding:36px 20px 70px;position:relative;z-index:1;}
@@ -63,7 +64,7 @@ img,video,iframe{max-width:100%;display:block;}
 .hero p{font-size:16px;color:#6a6280;margin:0 0 18px;}
 .hero-tags{display:flex;gap:8px;flex-wrap:wrap;}
 .hero-tag{background:#fff;border:1.5px solid var(--lav-mid);padding:8px 16px;border-radius:999px;font-size:13.5px;font-weight:700;color:var(--lav-deep);line-height:1;transition:transform .25s cubic-bezier(.34,1.56,.64,1);}
-.hero-tag:nth-child(2n){border-color:#F7B6D4;color:var(--pink-deep);}
+.hero-tag:nth-child(2n){border-color:var(--pink-mid);color:var(--pink-deep);}
 .hero-tag:hover{transform:scale(1.08) rotate(-2deg);}
 @media(max-width:560px){.hero{flex-direction:column;text-align:center;gap:18px;padding:40px 22px;}.hero-profile,.hero-ph{width:120px;height:120px;}.hero-tags{justify-content:center;}}
 
@@ -124,7 +125,7 @@ details.card[open] summary::after{transform:translateY(-50%) rotate(45deg);}
 @media(max-width:700px){.use{grid-template-columns:1fr;}}
 .use-box{border-radius:24px;padding:20px 22px;border:2px solid;}
 .use-box.ok{background:rgba(233,223,255,.55);border-color:var(--lav-mid);}
-.use-box.no{background:rgba(255,221,238,.5);border-color:#F7B6D4;}
+.use-box.no{background:rgba(255,221,238,.5);border-color:var(--pink-mid);}
 .use-box h4{font-family:'Griun','Paperozi',cursive;font-size:19px;text-align:center;margin-bottom:10px;}
 .use-box.ok h4{color:var(--lav-deep);}.use-box.no h4{color:var(--pink-deep);}
 .use-box ul{margin:0;padding:0;list-style:none;font-size:15px;}
@@ -144,7 +145,7 @@ textarea.inp{resize:vertical;min-height:84px;line-height:1.6;}
 .sel button{padding:9px 18px;border-radius:999px;border:1.5px solid var(--lav-mid);background:#fff;font-family:inherit;font-size:14px;font-weight:700;color:var(--sub);cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1);}
 .sel button:hover{transform:scale(1.05);}
 .sel button.on{background:linear-gradient(120deg,var(--lav-mid),#E3B9F0);color:#fff;border-color:transparent;}
-.agree{display:flex;align-items:flex-start;gap:12px;background:rgba(255,221,238,.45);border:2px dashed #F7B6D4;border-radius:20px;padding:16px 18px;cursor:pointer;margin-top:6px;}
+.agree{display:flex;align-items:flex-start;gap:12px;background:rgba(255,221,238,.45);border:2px dashed var(--pink-mid);border-radius:20px;padding:16px 18px;cursor:pointer;margin-top:6px;}
 .agree input{position:absolute;opacity:0;pointer-events:none;}
 .agree .box{flex:0 0 26px;width:26px;height:26px;border-radius:9px;border:2.5px solid var(--pink-deep);background:#fff;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:900;margin-top:2px;}
 .agree.on .box{background:var(--pink-deep);}
@@ -206,7 +207,7 @@ textarea.inp{resize:vertical;min-height:84px;line-height:1.6;}
 /* ===== 설정 ===== */
 var CONFIG={qnaNumber:''};           /* 아트머그 작품번호 (문의하기 버튼용) */
 var IMG_BASE='이미지/';              /* 프사.jpg 등이 들어있는 폴더 */
-var SHEET_ID='';                     /* 구글시트 ID (시트 공유: 링크가 있는 모든 사용자 - 뷰어) */
+var SHEET_ID='1O6DP9q80GVQZF6Q05kuUahgHRlXmg8hnK6U1aKo1iKY';                     /* 구글시트 ID (시트 공유: 링크가 있는 모든 사용자 - 뷰어) */
 var SOON='준비중입니다';
 
 /* 기본 신청양식 (시트 '신청양식' 탭이 있으면 그걸로 대체됨) */
@@ -224,10 +225,12 @@ var FORM=[
 ];
 var AGREE='모든 안내사항 및 유의사항을 확인했으며 이에 동의합니다.';
 var FV={};
+var T={copyTitle:'말롱 SD 커미션 신청서',copyConfirm:'모든 안내사항/유의사항을 확인했으며 동의합니다 (확인)',needAgree:'안내사항 동의에 체크해 주세요 ♡',needReq:'필수 항목을 작성해 주세요',copied:'복사되었습니다! 문의로 보내주세요 ♡'};
 
 /* iframe 높이 전달 */
 (function(){function h(){var m=0;Array.prototype.forEach.call(document.body.children,function(c){var r=c.getBoundingClientRect();if(r.bottom>m)m=r.bottom;});return Math.ceil(m+window.pageYOffset);}
-function send(){window.parent.postMessage({type:'iframeResize',height:h()},'*');}
+function send(){window.parent.postMessage({type:'iframeResize',height:h()},'*');
+ var items=[];document.querySelectorAll('.page>.section').forEach(function(x){var t=x.querySelector('.section-title');if(t&&x.style.display!=='none')items.push([x.id,t.textContent]);});window.parent.postMessage({type:'amcmMenu',items:items},'*');}
 window.addEventListener('load',send);window.addEventListener('resize',send);document.addEventListener('DOMContentLoaded',send);
 if(window.ResizeObserver)new ResizeObserver(send).observe(document.body);setInterval(send,700);})();
 
@@ -268,11 +271,11 @@ function upd(){var ok=$('agreeCk').checked&&!missing().length;$('copyBtn').class
 function toast(t){$('toast').textContent=t;setTimeout(function(){$('toast').textContent='';},2500);}
 $('agree').onclick=function(e){e.preventDefault();$('agreeCk').checked=!$('agreeCk').checked;upd();};
 $('copyBtn').onclick=function(){
-  if(!$('agreeCk').checked){toast('안내사항 동의에 체크해 주세요 ♡');return;}
-  var m=missing();if(m.length){toast('필수 항목을 작성해 주세요: '+m[0]+(m.length>1?' 외 '+(m.length-1):''));return;}
-  var t='[말롱 SD 커미션 신청서]\n'+FORM.map(function(f,i){return '▪ '+f.n+' : '+String(FV[i]||'').trim();}).join('\n')+'\n\n▪ 모든 안내사항/유의사항을 확인했으며 동의합니다 (확인)';
+  if(!$('agreeCk').checked){toast(T.needAgree);return;}
+  var m=missing();if(m.length){toast(T.needReq+': '+m[0]+(m.length>1?' 외 '+(m.length-1):''));return;}
+  var t='['+T.copyTitle+']\n'+FORM.map(function(f,i){return '▪ '+f.n+' : '+String(FV[i]||'').trim();}).join('\n')+'\n\n▪ '+T.copyConfirm;
   var p=$('preview');p.style.display='block';p.textContent=t;
-  function ok(){toast('복사되었습니다! 문의로 보내주세요 ♡');}
+  function ok(){toast(T.copied);}
   if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,function(){fb();});else fb();
   function fb(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){toast('아래 내용을 직접 복사해 주세요');}a.remove();}
 };
@@ -286,34 +289,55 @@ window.addEventListener('message',function(e){var d=e.data;if(!d||d.type!=='scro
 var _cb=0,_pending={};
 window.google=window.google||{};google.visualization=google.visualization||{};google.visualization.Query=google.visualization.Query||{};
 google.visualization.Query.setResponse=function(r){var f=_pending[r&&r.reqId];if(f)f(r);};
-function loadTab(name){return new Promise(function(resolve){
+function loadTab(name,headKey){return new Promise(function(resolve){
   var id=String(_cb++),done=false,sc=document.createElement('script');
   function finish(v){if(done)return;done=true;delete _pending[id];sc.remove();resolve(v);}
-  _pending[id]=function(r){if(!r||r.status!=='ok'||!r.table){finish([]);return;}
-    var rows=r.table.rows.map(function(row){return (row.c||[]).map(function(c){return c&&c.v!=null?String(c.v):'';});});
+  _pending[id]=function(r){if(!r||r.status!=='ok'||!r.table){finish(null);return;}
+    var rows=r.table.rows.map(function(row){return (row.c||[]).map(function(c){return c&&c.v!=null?String(c.f!=null?c.f:c.v):'';});});
     rows=rows.filter(function(x){return x.some(function(y){return y.trim()!=='';});});
-    if(rows.length&&/^(항목|구분|제목|라벨|순서|가격)/.test((rows[0][0]||'').trim()))rows=rows.slice(1);
-    finish(rows);};
-  sc.onerror=function(){finish([]);};setTimeout(function(){finish([]);},8000);
+    /* 첫 줄 제목이 맞지 않으면(탭이 없거나 빈 시트) 기본 내용을 그대로 둠 */
+    if(!rows.length||(rows[0][0]||'').trim().indexOf(headKey)!==0){finish(null);return;}
+    finish(rows.slice(1));};
+  sc.onerror=function(){finish(null);};setTimeout(function(){finish(null);},8000);
   sc.src='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=out:json;reqId:'+id+'&headers=0&sheet='+encodeURIComponent(name)+'&_='+Date.now();
   document.head.appendChild(sc);});}
 
-function applyBasic(rows){var m={};rows.forEach(function(r){m[(r[0]||'').trim()]=r[1]||'';});var hero=$('hero');
-  if(m['이름']){hero.querySelector('h1').textContent=m['이름'];$('heroPh').textContent=m['이름'];}
-  if(m['뱃지'])hero.querySelector('.hero-badge').textContent=m['뱃지'];
-  if(m['소개'])hero.querySelector('p').innerHTML=nl(m['소개']);
-  if(m['프사']){var im=hero.querySelector('.hero-profile');$('heroPh').style.display='none';im.style.display='block';im.src=imgSrc(m['프사']);}
-  var tags=[];for(var i=1;i<=30;i++){if(m['태그'+i]===undefined)break;if(m['태그'+i].trim())tags.push(m['태그'+i].trim());}
-  if(tags.length)hero.querySelector('.hero-tags').innerHTML=tags.map(function(t){return '<span class="hero-tag">'+esc(t)+'</span>';}).join('');
-  if(m['준비중문구'])SOON=m['준비중문구'];
-  if(m['문의번호'])CONFIG.qnaNumber=m['문의번호'].trim();
-  if(m['문의버튼'])document.querySelectorAll('.ask-btn').forEach(function(b){b.textContent=m['문의버튼'];});
-  if(m['신청양식안내'])$('formNote').innerHTML=nl(m['신청양식안내']);
-  if(m['동의문구']){AGREE=m['동의문구'];$('agreeTx').textContent=AGREE;}
-  setTitle('notice',m['제목공지']);setTitle('schedule',m['제목일정']);setTitle('samples',m['제목샘플']);setTitle('process',m['제목작업순서']);setTitle('price',m['제목가격']);setTitle('usage',m['제목사용범위']);setTitle('form',m['제목신청양식']);}
+function applyBasic(rows){var m={};rows.forEach(function(r){var k=(r[0]||'').trim();if(k)m[k]=(r[1]||'');});var hero=$('hero');
+  function has(k){return m[k]!==undefined;}
+  function filled(k){return has(k)&&m[k].trim()!=='';}
+  /* 칸을 비우면 해당 요소를 숨김 */
+  function put(el,k){if(!el||!has(k))return;el.innerHTML=nl(m[k]);el.style.display=filled(k)?'':'none';}
+  if(filled('브라우저제목'))document.title=m['브라우저제목'];
+  if(filled('이름')){hero.querySelector('h1').textContent=m['이름'];$('heroPh').textContent=m['이름'];}
+  put(hero.querySelector('.hero-badge'),'뱃지');
+  put(hero.querySelector('p'),'소개');
+  if(has('프사')){var w=hero.querySelector('.hero-wrap'),im=hero.querySelector('.hero-profile');w.style.display='';if(filled('프사')){$('heroPh').style.display='none';im.style.display='block';im.src=imgSrc(m['프사']);}else{w.style.display='none';}}
+  if(has('태그1')){var tags=[];for(var i=1;i<=30;i++){if(filled('태그'+i))tags.push(m['태그'+i].trim());}
+    hero.querySelector('.hero-tags').innerHTML=tags.map(function(t){return '<span class="hero-tag">'+esc(t)+'</span>';}).join('');}
+  if(filled('준비중문구'))SOON=m['준비중문구'];
+  if(filled('문의번호'))CONFIG.qnaNumber=m['문의번호'].trim();
+  document.querySelectorAll('.ask-btn').forEach(function(b){if(has('문의버튼')){b.textContent=m['문의버튼'];b.parentNode.style.display=filled('문의버튼')?'':'none';}});
+  put($('formNote'),'신청양식안내');
+  if(filled('동의문구')){AGREE=m['동의문구'];$('agreeTx').textContent=AGREE;}
+  if(filled('복사버튼'))$('copyBtn').textContent=m['복사버튼'];
+  if(filled('초기화버튼'))$('resetBtn').textContent=m['초기화버튼'];
+  [['신청서제목','copyTitle'],['신청서확인문구','copyConfirm'],['동의안내','needAgree'],['필수안내','needReq'],['복사완료','copied']].forEach(function(a){if(filled(a[0]))T[a[1]]=m[a[0]];});
+  if(filled('가능제목'))$('useOk').parentNode.querySelector('h4').textContent=m['가능제목'];
+  if(filled('불가능제목'))$('useNo').parentNode.querySelector('h4').textContent=m['불가능제목'];
+  /* 색상 */
+  var root=document.documentElement.style;
+  [['색_연한보라','--lav'],['색_보라','--lav-mid'],['색_진한보라','--lav-deep'],['색_글자보라','--lav-ink'],['색_연분홍','--pink'],['색_분홍','--pink-mid'],['색_진한분홍','--pink-deep'],['색_글자','--ink'],['색_배경위','--bg1'],['색_배경아래','--bg2']].forEach(function(a){if(filled(a[0]))root.setProperty(a[1],m[a[0]].trim());});
+  if(has('장식')){var ch=Array.from(m['장식'].replace(/\s/g,''));document.querySelectorAll('.deco').forEach(function(d,i){d.textContent=ch.length?ch[i%ch.length]:'';});}
+  /* 섹션 제목 */
+  Object.keys(SEC).forEach(function(n){setTitle(SEC[n],m['제목'+n]);});
+  /* 섹션 순서 / 숨김: 적은 순서대로 보이고, 빠진 항목은 숨김 */
+  if(filled('섹션순서')){var page=document.querySelector('.page'),ask=document.querySelector('.ask-wrap'),used={};
+    m['섹션순서'].split(/[,，\n>]/).forEach(function(n){var id=SEC[n.replace(/\s/g,'')];if(id&&!used[id]){used[id]=1;page.insertBefore($(id),ask);}});
+    if(Object.keys(used).length)Object.keys(SEC).forEach(function(n){if(!used[SEC[n]])$(SEC[n]).style.display='none';});}}
+var SEC={'공지':'notice','일정':'schedule','샘플':'samples','작업순서':'process','가격':'price','사용범위':'usage','신청양식':'form'};
 
 /* 공지: 제목 | 내용   (제목이 '강조' 이면 맨 위 띠 배너) */
-function applyNotice(rows){var h='';rows.forEach(function(r){var t=(r[0]||'').trim();if(t==='강조'){$('banner').innerHTML=nl(r[1]);$('banner').style.display='';}});
+function applyNotice(rows){var bn=rows.filter(function(r){return (r[0]||'').trim()==='강조'&&(r[1]||'').trim();});$('banner').style.display=bn.length?'':'none';if(bn.length)$('banner').innerHTML=bn.map(function(r){return nl(r[1]);}).join('<br>');
   var cards=rows.filter(function(r){return (r[0]||'').trim()!=='강조';});
   $('noticeList').innerHTML=cards.map(function(r){var ls=String(r[1]||'').split(/\n/).filter(function(l){return l.trim();});
     return '<details class="card" open><summary>'+esc(r[0])+'</summary><div class="card-body">'+ls.map(function(l){return '<div class="line">'+esc(l)+'</div>';}).join('')+'</div></details>';}).join('');}
@@ -353,13 +377,8 @@ var DEFAULT_SAMPLES=[['낙서 타입','상세1.jpg','낙서 SD | 전신',''],['�
 applySamples(DEFAULT_SAMPLES);
 renderForm();
 if(SHEET_ID){
-  loadTab('기본정보').then(function(r){if(r.length)applyBasic(r);});
-  loadTab('공지').then(function(r){if(r.length)applyNotice(r);});
-  loadTab('일정').then(function(r){if(r.length)applySched(r);});
-  loadTab('샘플').then(function(r){if(r.length)applySamples(r);});
-  loadTab('작업순서').then(function(r){if(r.length)applyProcess(r);});
-  loadTab('가격').then(function(r){if(r.length)applyPrice(r);});
-  loadTab('사용범위').then(function(r){if(r.length)applyUsage(r);});
-  loadTab('신청양식').then(function(r){if(r.length)applyForm(r);});
+  loadTab('기본정보','항목').then(function(r){if(r&&r.length)applyBasic(r);
+    [['공지','제목',applyNotice],['일정','라벨',applySched],['샘플','구분',applySamples],['작업순서','순서',applyProcess],['가격','항목',applyPrice],['사용범위','구분',applyUsage],['신청양식','항목',applyForm]].forEach(function(a){
+      loadTab(a[0],a[1]).then(function(rows){if(rows===null)return;if(!rows.length){$(SEC[a[0]]).style.display='none';return;}a[2](rows);});});});
 }
 </script></body></html>
