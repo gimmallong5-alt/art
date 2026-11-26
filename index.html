@@ -96,8 +96,8 @@ details.card[open] summary::after{transform:translateY(-50%) rotate(45deg);}
 @media(max-width:700px){.gallery{gap:10px;}.gallery .gi.gi.gi.gi.gi{width:calc((100% - 10px)/2);}.gallery .gi.gi.gi.gi.gi:only-child{width:100%;}}
 .gi{background:#fff;border-radius:20px;overflow:hidden;border:2px solid #fff;box-shadow:0 10px 24px -14px rgba(142,114,216,.5);cursor:zoom-in;transition:transform .25s ease;}
 .gi:hover{transform:translateY(-4px) rotate(-.6deg);}
-.gi .im{aspect-ratio:1/1;background:var(--panel);}
-.gi img{width:100%;height:100%;object-fit:cover;}
+.gi .im{position:relative;height:0;padding-top:100%;background:#fff;overflow:hidden;}
+.gi .im img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;}
 .gi .cap{padding:8px 10px 10px;text-align:center;font-size:13.5px;color:var(--sub);line-height:1.5;}
 .gi .cap b{display:block;color:var(--lav-deep);font-size:14.5px;}
 .soon{display:flex;align-items:center;justify-content:center;min-height:160px;border-radius:22px;background:var(--panel);color:var(--sub);font-weight:700;border:2px dashed var(--lav-mid);}
