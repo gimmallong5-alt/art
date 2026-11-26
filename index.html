@@ -92,8 +92,8 @@ details.card[open] summary::after{transform:translateY(-50%) rotate(45deg);}
 .tab-btn:hover{transform:scale(1.06);}
 .tab-btn.active{background:linear-gradient(120deg,var(--lav-mid),#E3B9F0);color:#fff;border-color:transparent;box-shadow:0 8px 18px -6px rgba(142,114,216,.55);}
 .pn{display:none;}.pn.active{display:block;}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-@media(max-width:700px){.gallery{grid-template-columns:repeat(2,1fr);gap:10px;}}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}.gallery .gi{width:calc((100% - 28px)/3);}.gallery .gi:only-child{width:min(100%,460px);}.gallery .gi:first-child:nth-last-child(2),.gallery .gi:first-child:nth-last-child(2)~.gi,.gallery .gi:first-child:nth-last-child(4),.gallery .gi:first-child:nth-last-child(4)~.gi{width:calc((100% - 14px)/2);}
+@media(max-width:700px){.gallery{gap:10px;}.gallery .gi.gi.gi.gi.gi{width:calc((100% - 10px)/2);}.gallery .gi.gi.gi.gi.gi:only-child{width:100%;}}
 .gi{background:#fff;border-radius:20px;overflow:hidden;border:2px solid #fff;box-shadow:0 10px 24px -14px rgba(142,114,216,.5);cursor:zoom-in;transition:transform .25s ease;}
 .gi:hover{transform:translateY(-4px) rotate(-.6deg);}
 .gi .im{aspect-ratio:1/1;background:var(--panel);}
@@ -374,7 +374,7 @@ function applyForm(rows){var f=rows.filter(function(r){return (r[0]||'').trim();
   if(f.length)FORM=f;renderForm();}
 
 var DEFAULT_SAMPLES=[['낙서 타입','상세1.jpg','낙서 SD | 전신',''],['낙서 타입','상세2.jpg','낙서 SD | 전신',''],['낙서 타입','상세3.jpg','낙서 SD | 2인',''],['낙서 타입','상세4.jpg','낙서 SD | 2인',''],['풀채색 타입','상세5.jpg','풀채색 SD | 전신 + 배경',''],['풀채색 타입','상세6.jpg','풀채색 SD | 전신','']];
-applySamples(DEFAULT_SAMPLES);
+/* samples come from sheet */
 renderForm();
 if(SHEET_ID){
   loadTab('기본정보','항목').then(function(r){if(r&&r.length)applyBasic(r);
